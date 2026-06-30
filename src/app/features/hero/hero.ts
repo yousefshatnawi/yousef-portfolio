@@ -22,6 +22,14 @@ import {
         ], { optional: true }),
       ]),
     ]),
+    trigger('photoEnter', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(1.05)' }),
+        animate('900ms 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+          style({ opacity: 1, transform: 'scale(1)' })
+        ),
+      ]),
+    ]),
   ],
 })
 export class HeroComponent {
