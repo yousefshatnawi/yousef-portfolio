@@ -9,7 +9,7 @@
     @include container;
     display: flex;
     flex-direction: column;
-    gap: $space-4xl;
+    gap: $space-2xl;
   }
 
   &__header {
@@ -41,6 +41,7 @@
   padding: $space-2xl 0;
   border-bottom: 1px solid $border;
 
+  &:first-child { padding-top: 0; }
   &:last-child { border-bottom: none; }
 
   @include laptop {
