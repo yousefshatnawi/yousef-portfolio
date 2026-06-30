@@ -10,7 +10,7 @@ export class PortfolioService {
       category: 'Enterprise System',
       name: 'The Line',
       description: 'Large-scale government enterprise system built for a client in Saudi Arabia. Contributed across multiple modules with a focus on architecture quality and sustainable delivery.',
-      stack: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Angular Material'],
+      stack: ['Angular 21', 'TypeScript', 'RxJS', 'SCSS', 'Angular Material'],
       contribution: 'Feature development · REST API integration · Legacy refactoring · Production bug fixes',
       challenge: 'Refactoring large, tightly-coupled components into lean, reusable pieces inside a high-stakes live government system — without breaking anything.',
       nda: true,
@@ -33,7 +33,7 @@ export class PortfolioService {
       stack: ['Angular', 'SCSS', 'Reactive Forms', 'REST APIs'],
       contribution: 'End-to-end front-end · Role-based routing · Booking flows · Auth',
       challenge: 'Designing a consistent, intuitive UX across three completely different user roles while maintaining a single coherent design system.',
-      github: 'https://github.com/yousefshatnawi',
+      github: 'https://github.com/yousefshatnawi/hottel-managment-system-',
       demo: 'https://casaserene-89779.web.app/home',
     },
     {
@@ -44,7 +44,7 @@ export class PortfolioService {
       stack: ['Angular', 'Angular Material', 'SCSS', 'Reactive Forms', 'REST APIs'],
       contribution: 'Full front-end across all four roles · Responsive dashboards · Form architecture',
       challenge: 'Building responsive, role-aware interfaces for four distinct user types with fundamentally different workflows on a single codebase.',
-      github: 'https://github.com/yousefshatnawi',
+      nda: true,
     },
   ]);
 
@@ -98,7 +98,7 @@ export class PortfolioService {
   readonly stackGroups = signal<StackGroup[]>([
     {
       category: 'Frontend',
-      items: ['Angular', 'TypeScript', 'JavaScript ES6+', 'SCSS', 'HTML5', 'RxJS', 'Angular Material'],
+      items: ['Angular', 'TypeScript', 'JavaScript ES6+', 'SCSS', 'HTML5', 'RxJS', 'Signals', 'Angular Material'],
     },
     {
       category: 'Architecture',
