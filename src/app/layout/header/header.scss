@@ -1,0 +1,155 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: $navbar-height;
+  border-bottom: 1px solid transparent;
+  transition: background $transition-slow, border-color $transition-slow, backdrop-filter $transition-slow;
+
+  &.scrolled {
+    background: rgba($bg-base, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: $border;
+  }
+
+  &__inner {
+    @include container;
+    @include flex-between;
+    height: 100%;
+  }
+
+  &__brand {
+    font-size: $font-body;
+    font-weight: 500;
+    color: $text-primary;
+    letter-spacing: -0.01em;
+    transition: color $transition-fast;
+
+    &:hover { color: $accent; }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    @include tablet { display: none; }
+  }
+
+  &__link {
+    font-size: $font-small;
+    font-weight: 400;
+    color: $text-secondary;
+    padding: $space-sm $space-md;
+    border-radius: $radius-md;
+    transition: color $transition-fast, background $transition-fast;
+
+    &:hover {
+      color: $text-primary;
+      background: rgba($border, 0.5);
+    }
+  }
+
+  &__cta {
+    font-size: $font-small;
+    font-weight: 500;
+    color: $text-primary;
+    padding: 8px 18px;
+    border: 1px solid rgba($accent, 0.35);
+    border-radius: $radius-md;
+    background: rgba($primary, 0.1);
+    transition: background $transition-base, border-color $transition-base, color $transition-base;
+
+    &:hover {
+      background: $primary;
+      border-color: $primary;
+    }
+  }
+
+  // ─── Mobile Toggle ─────────────────────────────────────────────────────────
+  &__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: $space-sm;
+    z-index: 101;
+
+    @include tablet { display: flex; }
+
+    span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: $text-primary;
+      border-radius: 2px;
+      transition: transform $transition-base, opacity $transition-base;
+      transform-origin: center;
+    }
+
+    &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    &.open span:nth-child(2) { transform: translateY(-7px) rotate(-45deg); }
+  }
+
+  // ─── Mobile Panel ──────────────────────────────────────────────────────────
+  &__mobile {
+    position: fixed;
+    inset: $navbar-height 0 0 0;
+    background: rgba($bg-base, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-lg;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity $transition-base, transform $transition-base;
+
+    &.open {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $space-lg;
+    }
+  }
+
+  &__mobile-link {
+    font-size: $font-h3;
+    font-weight: 400;
+    color: $text-secondary;
+    transition: color $transition-fast;
+
+    &:hover { color: $text-primary; }
+  }
+
+  &__mobile-cta {
+    margin-top: $space-md;
+    font-size: $font-body;
+    font-weight: 500;
+    color: $text-primary;
+    padding: 12px 32px;
+    border: 1px solid rgba($accent, 0.35);
+    border-radius: $radius-md;
+    background: rgba($primary, 0.1);
+    transition: background $transition-base, border-color $transition-base;
+
+    &:hover {
+      background: $primary;
+      border-color: $primary;
+    }
+  }
+}

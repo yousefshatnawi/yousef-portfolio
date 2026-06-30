@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: $font-body;
+  font-weight: 400;
+  color: $text-primary;
+  background-color: $bg-base;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: $text-primary;
+}
+
+p {
+  color: $text-secondary;
+  line-height: 1.75;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.text-muted { color: $text-muted; }
+.text-secondary { color: $text-secondary; }
+.text-accent { color: $accent; }

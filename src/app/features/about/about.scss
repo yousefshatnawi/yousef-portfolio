@@ -1,0 +1,79 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.about {
+  @include section-padding;
+  border-top: 1px solid $border;
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: $space-4xl;
+
+    @include laptop {
+      grid-template-columns: 160px 1fr;
+      gap: $space-3xl;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $space-2xl;
+    }
+  }
+
+  &__header {
+    padding-top: 6px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xl;
+    max-width: 640px;
+  }
+
+  &__text p {
+    font-size: clamp(0.95rem, 1.8vw, 1.075rem);
+    line-height: 1.8;
+    color: $text-secondary;
+  }
+
+  &__aside {
+    margin-top: $space-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    padding-top: $space-xl;
+    border-top: 1px solid $border;
+  }
+
+  &__fact {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__fact-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: $font-micro;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-muted;
+  }
+
+  &__fact-value {
+    font-size: $font-small;
+    color: $text-secondary;
+  }
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: $font-micro;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-muted;
+}

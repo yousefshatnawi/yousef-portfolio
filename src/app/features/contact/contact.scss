@@ -1,0 +1,103 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.contact {
+  @include section-padding;
+  border-top: 1px solid $border;
+
+  &__inner {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3xl;
+    max-width: $content-width;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+  }
+
+  &__heading {
+    font-size: $font-h1;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    color: $text-primary;
+    line-height: 1.1;
+  }
+
+  &__sub {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: $text-secondary;
+    line-height: 1.7;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid $border;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    background: $bg-surface;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $space-lg;
+    padding: $space-xl $space-xl;
+    border-bottom: 1px solid $border;
+    color: $text-secondary;
+    transition: color $transition-fast, background $transition-fast;
+    position: relative;
+
+    &:last-child { border-bottom: none; }
+
+    &:hover {
+      color: $text-primary;
+      background: rgba($text-primary, 0.03);
+
+      .contact__link-arrow {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+      }
+    }
+
+    > i:first-child {
+      font-size: 1.1rem;
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    span {
+      flex: 1;
+      font-size: $font-body;
+      font-weight: 400;
+
+      @include mobile {
+        font-size: $font-small;
+        word-break: break-all;
+      }
+    }
+  }
+
+  &__link-arrow {
+    margin-left: auto;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateX(-4px) translateY(4px);
+    transition: opacity $transition-fast, transform $transition-fast;
+    flex-shrink: 0;
+  }
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: $font-micro;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-muted;
+}

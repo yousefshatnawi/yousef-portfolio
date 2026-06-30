@@ -1,0 +1,99 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.stack {
+  @include section-padding;
+  border-top: 1px solid $border;
+
+  &__inner {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4xl;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__title {
+    font-size: $font-h1;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: $text-primary;
+  }
+
+  &__groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 860px;
+  }
+
+  &__group {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: $space-xl;
+    padding: $space-xl 0;
+    border-bottom: 1px solid $border;
+
+    &:last-child { border-bottom: none; }
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $space-md;
+    }
+  }
+
+  &__group-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: $font-micro;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-muted;
+    padding-top: 3px;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-sm;
+    align-items: flex-start;
+  }
+
+  &__item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: $font-small;
+    font-weight: 400;
+    color: $text-secondary;
+    padding: 6px 14px;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    background: $bg-surface;
+    cursor: default;
+    transition: color $transition-fast, border-color $transition-fast, background $transition-fast, transform $transition-fast;
+
+    &:hover {
+      color: $text-primary;
+      border-color: rgba($text-primary, 0.2);
+      background: rgba($text-primary, 0.04);
+      transform: translateY(-1px);
+    }
+
+    @include no-motion {
+      &:hover { transform: none; }
+    }
+  }
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: $font-micro;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-muted;
+}

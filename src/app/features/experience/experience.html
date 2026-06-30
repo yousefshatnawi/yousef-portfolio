@@ -1,0 +1,41 @@
+<section id="experience" class="experience">
+  <div class="experience__inner">
+
+    <div class="experience__header" appReveal>
+      <span class="section-label">Experience</span>
+      <h2 class="experience__title">Work History</h2>
+    </div>
+
+    <div class="experience__list">
+      @for (exp of experiences(); track exp.company; let i = $index) {
+        <article class="exp-item" appReveal [appRevealDelay]="i * 80">
+          <div class="exp-item__left">
+            <div class="exp-item__period">{{ exp.period }}</div>
+            @if (exp.current) {
+              <span class="exp-item__badge">Current</span>
+            }
+          </div>
+
+          <div class="exp-item__divider">
+            <div class="exp-item__dot" [class.exp-item__dot--active]="exp.current"></div>
+            <div class="exp-item__line"></div>
+          </div>
+
+          <div class="exp-item__right">
+            <div class="exp-item__header">
+              <h3 class="exp-item__company">{{ exp.company }}</h3>
+              <span class="exp-item__role">{{ exp.role }}</span>
+            </div>
+
+            <ul class="exp-item__bullets">
+              @for (bullet of exp.bullets; track bullet) {
+                <li>{{ bullet }}</li>
+              }
+            </ul>
+          </div>
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

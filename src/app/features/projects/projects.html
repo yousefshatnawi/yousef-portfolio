@@ -1,0 +1,94 @@
+<section id="projects" class="projects">
+  <div class="projects__inner">
+
+    <div class="projects__header" appReveal>
+      <span class="section-label">Featured Projects</span>
+      <h2 class="projects__title">Selected Work</h2>
+    </div>
+
+    <div class="projects__list">
+      @for (project of projects(); track project.id; let i = $index) {
+        <article
+          class="project"
+          [class.project--reversed]="i % 2 !== 0"
+          appReveal
+          [appRevealDelay]="i * 100">
+
+          <div class="project__content">
+            <div class="project__meta">
+              <span class="project__category">{{ project.category }}</span>
+              @if (project.nda) {
+                <span class="project__nda">Enterprise · NDA</span>
+              }
+            </div>
+
+            <h3 class="project__name">{{ project.name }}</h3>
+            <p class="project__desc">{{ project.description }}</p>
+
+            <div class="project__stack">
+              @for (tech of project.stack; track tech) {
+                <span class="project__tech">{{ tech }}</span>
+              }
+            </div>
+
+            <p class="project__contribution">{{ project.contribution }}</p>
+
+            <div class="project__challenge">
+              <span class="project__challenge-label">Challenge</span>
+              <p>{{ project.challenge }}</p>
+            </div>
+
+            <div class="project__links">
+              @if (project.nda) {
+                <span class="project__link project__link--disabled">
+                  <i class="bi bi-lock"></i>
+                  Confidential
+                </span>
+              } @else {
+                @if (project.github) {
+                  <a class="project__link" [href]="project.github" target="_blank" rel="noopener">
+                    <i class="bi bi-github"></i>
+                    GitHub
+                  </a>
+                }
+                @if (project.demo) {
+                  <a class="project__link project__link--primary" [href]="project.demo" target="_blank" rel="noopener">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                    Live Demo
+                  </a>
+                }
+              }
+            </div>
+          </div>
+
+          <div class="project__visual">
+            <div class="project__mockup">
+              <div class="project__mockup-bar">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="project__mockup-body">
+                <div class="project__mockup-name">{{ project.name }}</div>
+                <div class="project__mockup-stack">
+                  @for (tech of project.stack.slice(0,3); track tech) {
+                    <span>{{ tech }}</span>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </article>
+      }
+    </div>
+
+    <div class="projects__other" appReveal>
+      <p class="projects__other-label">Other notable work</p>
+      <p class="projects__other-item">
+        <span class="projects__other-name">BETA Reporting System</span>
+        — Built from scratch: designed the project structure and routing,
+        integrated REST APIs, built reusable component library.
+      </p>
+    </div>
+
+  </div>
+</section>

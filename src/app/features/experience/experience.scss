@@ -1,0 +1,183 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.experience {
+  @include section-padding;
+  border-top: 1px solid $border;
+
+  &__inner {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4xl;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__title {
+    font-size: $font-h1;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: $text-primary;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 860px;
+  }
+}
+
+// ─── Single experience item ───────────────────────────────────────────────────
+.exp-item {
+  display: grid;
+  grid-template-columns: 180px 32px 1fr;
+  gap: 0 $space-xl;
+  padding: $space-2xl 0;
+  border-bottom: 1px solid $border;
+
+  &:last-child { border-bottom: none; }
+
+  @include laptop {
+    grid-template-columns: 160px 28px 1fr;
+    gap: 0 $space-lg;
+  }
+
+  @include tablet {
+    grid-template-columns: 28px 1fr;
+    grid-template-rows: auto 1fr;
+
+    .exp-item__left {
+      grid-column: 2;
+      grid-row: 1;
+      margin-bottom: $space-sm;
+    }
+    .exp-item__divider {
+      grid-column: 1;
+      grid-row: 1 / 3;
+    }
+    .exp-item__right {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+
+  // ─── Left column (dates) ───────────────────────────────────────────────────
+  &__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: $space-sm;
+    padding-top: 3px;
+
+    @include tablet {
+      align-items: flex-start;
+    }
+  }
+
+  &__period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: $font-micro;
+    color: $text-muted;
+    white-space: nowrap;
+  }
+
+  &__badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: $font-micro;
+    color: $accent;
+    padding: 2px 8px;
+    border: 1px solid rgba($accent, 0.25);
+    border-radius: $radius-sm;
+    background: rgba($accent, 0.06);
+  }
+
+  // ─── Divider (dot + line) ─────────────────────────────────────────────────
+  &__divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $border;
+    flex-shrink: 0;
+    margin-top: 6px;
+    transition: background $transition-base;
+
+    &--active {
+      background: $accent;
+      box-shadow: 0 0 0 3px rgba($accent, 0.2);
+    }
+  }
+
+  &__line {
+    flex: 1;
+    width: 1px;
+    background: $border;
+    margin-top: $space-sm;
+  }
+
+  // ─── Right column (content) ───────────────────────────────────────────────
+  &__right {
+    padding-bottom: $space-lg;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: $space-lg;
+  }
+
+  &__company {
+    font-size: $font-h3;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: $text-primary;
+  }
+
+  &__role {
+    font-size: $font-small;
+    color: $text-muted;
+  }
+
+  &__bullets {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+
+    li {
+      position: relative;
+      padding-left: $space-lg;
+      font-size: $font-small;
+      color: $text-secondary;
+      line-height: 1.65;
+
+      &::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: $text-muted;
+      }
+    }
+  }
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: $font-micro;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-muted;
+}

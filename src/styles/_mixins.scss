@@ -1,0 +1,95 @@
+@use 'variables' as *;
+
+// ─── Breakpoints ─────────────────────────────────────────────────────────────
+@mixin laptop {
+  @media (max-width: #{$laptop}) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) { @content; }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) { @content; }
+}
+
+// ─── Layout ──────────────────────────────────────────────────────────────────
+@mixin container {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $space-xl;
+
+  @include tablet {
+    padding: 0 $space-lg;
+  }
+
+  @include mobile {
+    padding: 0 $space-md;
+  }
+}
+
+@mixin section-padding {
+  padding: $space-4xl 0;
+
+  @include tablet {
+    padding: $space-3xl 0;
+  }
+
+  @include mobile {
+    padding: $space-2xl 0;
+  }
+}
+
+// ─── Typography ──────────────────────────────────────────────────────────────
+@mixin label-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: $font-micro;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent;
+  padding: 4px 10px;
+  border: 1px solid rgba($accent, 0.25);
+  border-radius: $radius-sm;
+  background: rgba($accent, 0.06);
+}
+
+// ─── Flex helpers ─────────────────────────────────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ─── Links ────────────────────────────────────────────────────────────────────
+@mixin hover-underline($color: $accent) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $color;
+    transition: width $transition-base;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// ─── Reduced motion ──────────────────────────────────────────────────────────
+@mixin no-motion {
+  @media (prefers-reduced-motion: reduce) { @content; }
+}

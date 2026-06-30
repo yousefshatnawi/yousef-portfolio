@@ -1,0 +1,23 @@
+<section id="stack" class="stack">
+  <div class="stack__inner">
+
+    <div class="stack__header" appReveal>
+      <span class="section-label">Technical Stack</span>
+      <h2 class="stack__title">Tools & Technologies</h2>
+    </div>
+
+    <div class="stack__groups">
+      @for (group of stackGroups(); track group.category; let i = $index) {
+        <div class="stack__group" appReveal [appRevealDelay]="i * 100">
+          <span class="stack__group-label">{{ group.category }}</span>
+          <div class="stack__items">
+            @for (item of group.items; track item) {
+              <span class="stack__item">{{ item }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

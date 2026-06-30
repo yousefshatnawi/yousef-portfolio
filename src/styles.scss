@@ -1,0 +1,40 @@
+@use 'styles/variables' as *;
+@use 'styles/reset';
+@use 'styles/typography';
+
+// ─── Section base ─────────────────────────────────────────────────────────────
+section {
+  width: 100%;
+}
+
+// ─── Scrollbar ────────────────────────────────────────────────────────────────
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: $bg-base; }
+::-webkit-scrollbar-thumb { background: $border; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: $text-muted; }
+
+// ─── Selection ────────────────────────────────────────────────────────────────
+::selection {
+  background: rgba($primary, 0.3);
+  color: $text-primary;
+}
+
+// ─── Focus ────────────────────────────────────────────────────────────────────
+:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+// ─── Utility: visually hidden ─────────────────────────────────────────────────
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
