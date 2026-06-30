@@ -16,6 +16,16 @@ export class PortfolioService {
       nda: true,
     },
     {
+      id: 'beta',
+      category: 'Enterprise Internal System',
+      name: 'BETA Internal System',
+      description: 'Full-featured enterprise application for managing electrical and mechanical field inspections across multiple client sites and regions. Covers the complete inspection lifecycle — device assignment, engineer scheduling, a 4-step on-site workflow with digital signatures, and automated PDF report generation.',
+      stack: ['Angular 18', 'Signals', 'RxJS', 'SCSS', 'Reactive Forms', 'jsPDF', 'JWT'],
+      contribution: 'Architecture design · Role-based routing · Inspection workflow engine · Bilingual RTL system · Interceptor chain',
+      challenge: 'Engineering a stateful 4-step inspection workflow with dual draft persistence (localStorage + API sync) for unstable field connections — while supporting full Arabic/English RTL layout switching across 15+ feature modules, all without an external state library.',
+      nda: true,
+    },
+    {
       id: 'hotels',
       category: 'Management System',
       name: 'Hotels Management System',
@@ -24,6 +34,7 @@ export class PortfolioService {
       contribution: 'End-to-end front-end · Role-based routing · Booking flows · Auth',
       challenge: 'Designing a consistent, intuitive UX across three completely different user roles while maintaining a single coherent design system.',
       github: 'https://github.com/yousefshatnawi',
+      demo: 'https://casaserene-89779.web.app/home',
     },
     {
       id: 'guzlan',
