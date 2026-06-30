@@ -1,36 +1,55 @@
 <app-header></app-header>
 
+<!-- Mobile nav panel — rendered at root level to avoid navbar stacking context -->
+<div
+  class="mobile-nav"
+  [class.open]="menu.isOpen()"
+  role="dialog"
+  aria-label="Navigation menu"
+  aria-modal="true">
+  <nav>
+    @for (link of menu.links; track link.fragment) {
+      <button class="mobile-nav__link" (click)="menu.navigateTo(link.fragment)">
+        {{ link.label }}
+      </button>
+    }
+    <button class="mobile-nav__cta" (click)="menu.navigateTo('contact')">
+      Hire Me
+    </button>
+  </nav>
+</div>
+
 <main id="main-content">
   <app-hero></app-hero>
 
-  @defer (on viewport) {
+  @defer (on idle) {
     <app-about></app-about>
   } @placeholder {
-    <div></div>
+    <div id="about"></div>
   }
 
-  @defer (on viewport) {
+  @defer (on idle) {
     <app-projects></app-projects>
   } @placeholder {
-    <div></div>
+    <div id="projects"></div>
   }
 
-  @defer (on viewport) {
+  @defer (on idle) {
     <app-experience></app-experience>
   } @placeholder {
-    <div></div>
+    <div id="experience"></div>
   }
 
-  @defer (on viewport) {
+  @defer (on idle) {
     <app-stack></app-stack>
   } @placeholder {
-    <div></div>
+    <div id="stack"></div>
   }
 
-  @defer (on viewport) {
+  @defer (on idle) {
     <app-contact></app-contact>
   } @placeholder {
-    <div></div>
+    <div id="contact"></div>
   }
 </main>
 

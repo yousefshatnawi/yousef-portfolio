@@ -18,10 +18,17 @@
     border-bottom-color: $border;
   }
 
+  &.menu-open {
+    background: $bg-base;
+    border-bottom-color: $border;
+  }
+
   &__inner {
     @include container;
     @include flex-between;
     height: 100%;
+    position: relative;
+    z-index: 100;
   }
 
   &__brand {
@@ -76,8 +83,12 @@
   &__toggle {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
-    padding: $space-sm;
+    width: 36px;
+    height: 36px;
+    position: relative;
     z-index: 101;
 
     @include tablet { display: flex; }
@@ -92,64 +103,8 @@
       transform-origin: center;
     }
 
-    &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    &.open span:nth-child(2) { transform: translateY(-7px) rotate(-45deg); }
+    &.open span:nth-child(1) { transform: translateY(3.5px) rotate(45deg); }
+    &.open span:nth-child(2) { transform: translateY(-3.5px) rotate(-45deg); }
   }
 
-  // ─── Mobile Panel ──────────────────────────────────────────────────────────
-  &__mobile {
-    position: fixed;
-    inset: $navbar-height 0 0 0;
-    background: rgba($bg-base, 0.97);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: $space-lg;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: opacity $transition-base, transform $transition-base;
-
-    &.open {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateY(0);
-    }
-
-    nav {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: $space-lg;
-    }
-  }
-
-  &__mobile-link {
-    font-size: $font-h3;
-    font-weight: 400;
-    color: $text-secondary;
-    transition: color $transition-fast;
-
-    &:hover { color: $text-primary; }
-  }
-
-  &__mobile-cta {
-    margin-top: $space-md;
-    font-size: $font-body;
-    font-weight: 500;
-    color: $text-primary;
-    padding: 12px 32px;
-    border: 1px solid rgba($accent, 0.35);
-    border-radius: $radius-md;
-    background: rgba($primary, 0.1);
-    transition: background $transition-base, border-color $transition-base;
-
-    &:hover {
-      background: $primary;
-      border-color: $primary;
-    }
-  }
 }

@@ -1,45 +1,31 @@
 import {
-  Component, ChangeDetectionStrategy, signal, HostListener, inject
+  Component, ChangeDetectionStrategy, signal, HostListener, inject, OnDestroy
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-
-interface NavLink { label: string; fragment: string; }
+import { MenuService } from '../../core/services/menu.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [],
   templateUrl: './header.html',
   styleUrl: './header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy {
+  readonly menu = inject(MenuService);
   scrolled = signal(false);
-  menuOpen = signal(false);
-
-  readonly links: NavLink[] = [
-    { label: 'About',      fragment: 'about' },
-    { label: 'Projects',   fragment: 'projects' },
-    { label: 'Experience', fragment: 'experience' },
-    { label: 'Stack',      fragment: 'stack' },
-  ];
 
   @HostListener('window:scroll')
   onScroll(): void {
     this.scrolled.set(window.scrollY > 20);
   }
 
-  toggleMenu(): void {
-    this.menuOpen.update(v => !v);
+  @HostListener('window:keydown.escape')
+  onEscape(): void {
+    if (this.menu.isOpen()) this.menu.close();
   }
 
-  closeMenu(): void {
-    this.menuOpen.set(false);
-  }
-
-  scrollTo(fragment: string): void {
-    this.closeMenu();
-    document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth' });
+  ngOnDestroy(): void {
+    this.menu.close();
   }
 }

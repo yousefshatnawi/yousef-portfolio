@@ -22,15 +22,20 @@
 
   &__inner {
     width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
     padding-top: $space-4xl;
     padding-bottom: $space-4xl;
-    // Left padding aligns text with other sections at any viewport width
-    padding-left: max(#{$space-xl}, calc((100vw - #{$max-width}) / 2 + #{$space-xl}));
-    padding-right: 0; // photo bleeds to right viewport edge
+    padding-left: $space-xl;
+    padding-right: 0;
     display: grid;
-    grid-template-columns: 1fr clamp(360px, 38vw, 560px);
+    grid-template-columns: 1fr 460px;
     align-items: center;
-    min-height: 100vh;
+    min-height: calc(100vh - #{$navbar-height});
+
+    @include laptop {
+      grid-template-columns: 1fr 380px;
+    }
 
     @include tablet {
       grid-template-columns: 1fr;
@@ -62,8 +67,8 @@
   &__photo {
     position: relative;
     overflow: hidden;
-    height: 100vh;
-    max-height: 800px;
+    height: calc(100vh - #{$navbar-height});
+    max-height: 760px;
 
     @include tablet {
       height: 360px;
@@ -90,14 +95,14 @@
       z-index: 1;
     }
 
-    // Bottom fade + subtle right edge fade
+    // Bottom fade + right edge fade (matches left)
     &::after {
       content: '';
       position: absolute;
       inset: 0;
       background:
         linear-gradient(to top, $bg-base 0%, transparent 18%),
-        linear-gradient(to left, rgba($bg-base, 0.6) 0%, transparent 8%);
+        linear-gradient(to left, $bg-base 0%, transparent 30%);
       pointer-events: none;
       z-index: 1;
     }

@@ -1,18 +1,18 @@
-<header class="navbar" [class.scrolled]="scrolled()">
+<header class="navbar" [class.scrolled]="scrolled()" [class.menu-open]="menu.isOpen()">
   <div class="navbar__inner">
     <!-- Brand -->
-    <a class="navbar__brand" href="#" (click)="scrollTo('hero'); $event.preventDefault()">
+    <a class="navbar__brand" href="#" (click)="menu.navigateTo('hero'); $event.preventDefault()">
       Yousef Shatnawi
     </a>
 
     <!-- Desktop nav -->
     <nav class="navbar__links" aria-label="Primary navigation">
-      @for (link of links; track link.fragment) {
-        <button class="navbar__link" (click)="scrollTo(link.fragment)">
+      @for (link of menu.links; track link.fragment) {
+        <button class="navbar__link" (click)="menu.navigateTo(link.fragment)">
           {{ link.label }}
         </button>
       }
-      <button class="navbar__cta" (click)="scrollTo('contact')">
+      <button class="navbar__cta" (click)="menu.navigateTo('contact')">
         Hire Me
       </button>
     </nav>
@@ -20,26 +20,12 @@
     <!-- Mobile toggle -->
     <button
       class="navbar__toggle"
-      [class.open]="menuOpen()"
-      (click)="toggleMenu()"
+      [class.open]="menu.isOpen()"
+      (click)="menu.toggle()"
       aria-label="Toggle menu"
-      [attr.aria-expanded]="menuOpen()">
+      [attr.aria-expanded]="menu.isOpen()">
       <span></span>
       <span></span>
     </button>
-  </div>
-
-  <!-- Mobile panel -->
-  <div class="navbar__mobile" [class.open]="menuOpen()" role="dialog" aria-label="Navigation menu">
-    <nav>
-      @for (link of links; track link.fragment) {
-        <button class="navbar__mobile-link" (click)="scrollTo(link.fragment)">
-          {{ link.label }}
-        </button>
-      }
-      <button class="navbar__mobile-cta" (click)="scrollTo('contact')">
-        Hire Me
-      </button>
-    </nav>
   </div>
 </header>

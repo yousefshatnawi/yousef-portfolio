@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { HeaderComponent } from './layout/header/header';
 import { FooterComponent } from './layout/footer/footer';
 import { HeroComponent } from './features/hero/hero';
@@ -7,6 +7,7 @@ import { ProjectsComponent } from './features/projects/projects';
 import { ExperienceComponent } from './features/experience/experience';
 import { StackComponent } from './features/stack/stack';
 import { ContactComponent } from './features/contact/contact';
+import { MenuService } from './core/services/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -25,4 +26,6 @@ import { ContactComponent } from './features/contact/contact';
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {}
+export class App {
+  readonly menu = inject(MenuService);
+}
