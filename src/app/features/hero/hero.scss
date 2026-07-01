@@ -3,7 +3,6 @@
 @use '../../../styles/mixins' as *;
 
 .hero {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: $navbar-height;
@@ -24,14 +23,13 @@
     width: 100%;
     max-width: $max-width;
     margin: 0 auto;
-    padding-top: $space-4xl;
-    padding-bottom: $space-4xl;
+    padding-top: $space-2xl;
+    padding-bottom: $space-2xl;
     padding-left: $space-xl;
     padding-right: 0;
     display: grid;
     grid-template-columns: 1fr 460px;
     align-items: center;
-    min-height: calc(100vh - #{$navbar-height});
 
     @include laptop {
       grid-template-columns: 1fr 380px;
