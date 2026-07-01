@@ -18,7 +18,7 @@ export class PortfolioService {
     {
       id: 'beta',
       category: 'Enterprise Internal System',
-      name: 'BETA Internal System',
+      name: 'BETA Reporting System',
       description: 'Full-featured enterprise application for managing electrical and mechanical field inspections across multiple client sites and regions. Covers the complete inspection lifecycle — device assignment, engineer scheduling, a 4-step on-site workflow with digital signatures, and automated PDF report generation.',
       stack: ['Angular 18', 'Signals', 'RxJS', 'SCSS', 'Reactive Forms', 'jsPDF', 'JWT'],
       contribution: 'Architecture design · Role-based routing · Inspection workflow engine · Bilingual RTL system · Interceptor chain',
@@ -59,7 +59,7 @@ export class PortfolioService {
         'Building reusable components and shared modules across multiple projects',
         'Refactoring legacy codebases to improve readability, performance, and maintainability',
         'Working in an Agile team alongside backend engineers, QA, and UI/UX designers',
-        'Using Git and Azure DevOps for daily version control and CI/CD workflows',
+        'Using Git and Azure DevOps for daily version control and task management',
       ],
     },
     {
@@ -68,9 +68,12 @@ export class PortfolioService {
       period: 'Dec 2024 — May 2025',
       current: false,
       bullets: [
-        'Built the Hotels Management System front-end from the ground up',
-        'Implemented role-based access and routing for three distinct user types',
-        'Worked on authentication, room booking, and request management modules',
+        'Built responsive pages and reusable UI components using Angular, SCSS, and Angular Material',
+        'Developed features with Reactive Forms and integrated them with REST APIs',
+        'Implemented role-based functionality for admins, employees, and customers',
+        'Worked on routing, authentication, booking, and request management features',
+        'Structured the application into reusable components following a modular architecture',
+        'Collaborated with the team using Git for daily version control and feature delivery',
       ],
     },
     {
